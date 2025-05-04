@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎉 Happy Birthday! 🎉</title>
+  <style>
+    /* Base Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #fff0f5, #ffe0ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      padding: 30px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      z-index: 2;
+      animation: popIn 1s ease-out forwards;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .cake {
+      font-size: 2.5em;
+      line-height: 1.2;
+      margin: 20px auto;
+      max-width: 200px;
+    }
+
+    .candle {
+      display: inline-block;
+      animation: flicker 1s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+      100% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+    }
+
+    .balloon {
+      position: absolute;
+      top: -50px;
+      right: -30px;
+      font-size: 2em;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      animation: floatBalloon 4s infinite ease-in-out;
+    }
+
+    @keyframes floatBalloon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .balloon.pop {
+      animation: popBalloon 0.5s forwards;
+    }
+
+    @keyframes popBalloon {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0.1); opacity: 0; }
+    }
+
+    .sparkle {
+      position: absolute;
+      font-size: 1.2em;
+      opacity: 0;
+      animation: sparkle 2s infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .confetti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .confetti span {
+      position: absolute;
+      font-size: 1.5em;
+      animation: confetti-fall 6s infinite linear;
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100%) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .star {
+      position: absolute;
+      font-size: 1em;
+      opacity: 0.6;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .party-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .party-button:hover {
+      background: #ff1493;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2em;
+      }
+      p {
+        font-size: 1em;
+      }
+      .cake {
+        font-size: 2em;
+        max-width: 150px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Twinkling Stars -->
+  <script>
+    const starEmojis = ['✨', '🌟', '💫'];
+    for (let i = 0; i < 30; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.fontSize = (Math.random() * 1 + 0.5) + 'em';
+      star.innerHTML = starEmojis[Math.floor(Math.random() * starEmojis.length)];
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <!-- Confetti -->
+  <div class="confetti">
+    <script>
+      const confettiEmojis = ['🎉', '✨', '🎊', '💫', '🎈', '🍭'];
+      for (let i = 0; i < 40; i++) {
+        const piece = document.createElement('span');
+        piece.innerHTML = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.top = Math.random() * -200 + 'px';
+        piece.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        document.querySelector('.confetti').appendChild(piece);
+      }
+    </script>
+  </div>
+
+  <!-- Sparkles -->
+  <script>
+    const sparkleColors = ['#ffd700', '#ffffff', '#add8e6'];
+    for (let i = 0; i < 10; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.top = Math.random() * 100 + '%';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
+      sparkle.innerHTML = '✨';
+      document.body.appendChild(sparkle);
+    }
+  </script>
+
+  <!-- Birthday Card -->
+  <div class="card">
+    <div class="balloon" onclick="popBalloon(this)">🎈</div>
+    <h1>🎉 Happy Birthday! 🎉</h1>
+    <p>Wishing you a day full of joy, laughter, and sweet surprises!</p>
+
+    <!-- Emoji Cake -->
+    <div class="cake">
+      <div class="candle">🕯️</div>
+      <div>🎂</div>
+      <div>🧁</div>
+      <div>🍬</div>
+    </div>
+
+    <p>Have the best year yet! 🎂</p>
+    <button class="party-button" onclick="alert('🎉 Party time! 🎊')">🎈 Party On!</button>
+  </div>
+
+  <script>
+    function popBalloon(el) {
+      el.classList.add('pop');
+      setTimeout(() => el.remove(), 500);
+    }
+  </script>
+</body>
+</html>
